@@ -1,0 +1,179 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080b12">
+<title>MADLANGA COMMISSION</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#080b12;color:#f5f5f5;font-family:Arial,sans-serif}
+header{padding:24px 18px;background:#101522;border-bottom:1px solid #303544}
+.brand{color:#d6ad55;font-size:25px;font-weight:900;letter-spacing:1px}
+.sub{font-size:11px;color:#9ba3b4;margin-top:5px;letter-spacing:2px}
+main{padding:18px;max-width:650px;margin:auto}
+h2{font-size:17px;margin:22px 0 12px}
+.card{background:#141b29;border:1px solid #30394a;border-radius:14px;padding:17px;margin-bottom:13px}
+.muted{color:#9ba3b4;font-size:12px}
+.price{font-size:27px;font-weight:bold;margin:12px 0;color:#d6ad55}
+button,select{border:1px solid #414b60;background:#202a3b;color:white;padding:12px;border-radius:9px;font-size:13px}
+button:active{opacity:.7}
+.buttons{display:flex;gap:8px;flex-wrap:wrap}
+button.active{background:#b38a39;color:#080b12}
+.signal{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.buy{color:#35d69a}.sell{color:#ff6475}
+.big{font-size:20px;font-weight:bold;margin:10px 0}
+nav{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;margin:15px 0}
+nav button{padding:12px 3px;font-size:11px}
+.hidden{display:none}
+input{width:100%;padding:12px;background:#0b101b;border:1px solid #414b60;color:white;border-radius:8px;margin:8px 0}
+footer{text-align:center;color:#6f7889;font-size:10px;padding:25px}
+</style>
+</head>
+<body>
+<header>
+<div class="brand">MADLANGA COMMISSION</div>
+<div class="sub">POWERED BY LIMO EDGE PRO</div>
+</header>
+<main>
+<div class="card">
+<div class="muted">TRADING ENGINE STATUS</div>
+<div class="big" style="color:#d6ad55">● DEMO MODE</div>
+<div class="muted">Live market connection not configured</div>
+</div>
+
+<nav>
+<button class="active" onclick="show('home',this)">Dashboard</button>
+<button onclick="show('news',this)">News Sniper</button>
+<button onclick="show('licenses',this)">Licenses</button>
+<button onclick="show('admin',this)">Admin</button>
+</nav>
+
+<section id="home">
+<h2>MARKET ANALYSIS</h2>
+<div class="card">
+<div class="muted">SELECT MARKET</div>
+<select id="market">
+<option>XAUUSD - GOLD</option>
+<option>EURUSD</option>
+<option>GBPUSD</option>
+<option>BTCUSD</option>
+</select>
+<div class="price" id="price">Awaiting live feed</div>
+<div class="muted">No real-time price connected</div>
+</div>
+<div class="card">
+<div class="muted">SIGNAL TIMEFRAME</div>
+<div class="buttons" style="margin-top:10px">
+<button onclick="timeframe('1M',this)">1M</button>
+<button class="active" onclick="timeframe('5M',this)">5M</button>
+<button onclick="timeframe('15M',this)">15M</button>
+<button onclick="timeframe('1H',this)">1H</button>
+</div>
+<p class="muted" id="tf">Selected timeframe: 5M</p>
+</div>
+<div class="signal">
+<div class="card">
+<div class="buy big">BUY ▲</div>
+<div class="muted">Awaiting analysis</div>
+</div>
+<div class="card">
+<div class="sell big">SELL ▼</div>
+<div class="muted">Awaiting analysis</div>
+</div>
+</div>
+<div class="card">
+<h2>ZONE STRENGTH</h2>
+<p class="muted">Demand zone: Awaiting data</p>
+<p class="muted">Supply zone: Awaiting data</p>
+<p class="muted">Liquidity sweep: Standby</p>
+<p class="muted">Spike detector: Standby</p>
+</div>
+<div class="card">
+<h2>TRADING MODE</h2>
+<div class="buttons">
+<button class="active" onclick="mode('SIGNALS',this)">Signals only</button>
+<button onclick="mode('AUTO',this)">Auto trading</button>
+</div>
+<p class="muted" id="mode">Current mode: SIGNALS</p>
+<p class="muted">Automatic trading is not connected. No orders will be placed.</p>
+</div>
+</section>
+
+<section id="news" class="hidden">
+<h2>NEWS SNIPER</h2>
+<div class="card">
+<div class="big" style="color:#d6ad55">ECONOMIC INTELLIGENCE</div>
+<p class="muted">News feed not connected yet.</p>
+<p>NFP — Employment data</p>
+<p>CPI — Inflation</p>
+<p>FOMC — Federal Reserve</p>
+<p>PPI — Producer inflation</p>
+<p>GDP — Economic growth</p>
+</div>
+<div class="card">
+<h2>NEWS SIGNAL ENGINE</h2>
+<p class="muted">Each event will be analysed for:</p>
+<p>• Expected USD impact</p>
+<p>• Gold bullish/bearish reaction</p>
+<p>• BUY / SELL confirmation</p>
+<p>• Entry, stop-loss and targets</p>
+<p>• Spike and liquidity detection</p>
+<p>• NO TRADE when conditions are unsafe</p>
+</div>
+</section>
+
+<section id="licenses" class="hidden">
+<h2>LICENSE CENTRE</h2>
+<div class="card">
+<div class="big">MADLANGA PRO ACCESS</div>
+<p class="muted">Paid subscriptions only</p>
+<p>Monthly license — planned</p>
+<p>Annual license — planned</p>
+<p>Device activation — planned</p>
+<p>License verification — not connected</p>
+</div>
+<div class="card">
+<h2>ACTIVATE LICENSE</h2>
+<input placeholder="Enter your license key" id="key">
+<button onclick="alert('License server not connected yet. No keys are active.')">Activate key</button>
+</div>
+</section>
+
+<section id="admin" class="hidden">
+<h2>ADMINISTRATION</h2>
+<div class="card">
+<div class="big" style="color:#d6ad55">OWNER CONTROL CENTRE</div>
+<p class="muted">Admin backend not connected yet.</p>
+<p>• Manage subscribers</p>
+<p>• Issue and revoke keys</p>
+<p>• Monitor trading engine</p>
+<p>• Manage subscriptions</p>
+<p>• Emergency trading shutdown</p>
+</div>
+</section>
+
+<footer>MADLANGA COMMISSION © 2026<br>BUILD 1.0 — DEVELOPMENT EDITION<br>DEMO ONLY — NOT CONNECTED TO LIVE TRADING</footer>
+</main>
+<script>
+function show(id,btn){
+document.querySelectorAll('main section').forEach(s=>s.classList.add('hidden'));
+document.getElementById(id).classList.remove('hidden');
+document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));
+btn.classList.add('active');
+}
+function timeframe(t,btn){
+document.getElementById('tf').textContent='Selected timeframe: '+t;
+document.querySelectorAll('#home .buttons button').forEach(b=>b.classList.remove('active'));
+btn.classList.add('active');
+}
+function mode(m,btn){
+document.getElementById('mode').textContent='Current mode: '+m;
+btn.parentElement.querySelectorAll('button').forEach(b=>b.classList.remove('active'));
+btn.classList.add('active');
+if(m==='AUTO')alert('Auto mode is a prototype setting. Live trading is not connected.');
+}
+</script>
+</body>
+</html>
